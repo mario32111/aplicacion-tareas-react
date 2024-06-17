@@ -4,7 +4,7 @@ import  { TodoList } from './TodoList';
 import { TodoItem } from './TodoItem';
 import { CreateTodoButton } from './CreateTodoButton';
 import { Categories } from './Categories';
-
+import { ContainerSearch } from './ContainerSearch'
 
 import React from 'react';
 
@@ -21,7 +21,11 @@ function App() {
     <>
        <TodoCounter completed={16} total={25} />
        <Categories>
-        <TodoSearch />
+        <ContainerSearch>
+          <TodoSearch />
+          {<CreateTodoButton />}
+        </ContainerSearch>
+
         <TodoList>
             {defaultTodos.map(todo => (
               <TodoItem key={todo.text} nombre={todo.text} completed={todo.completed}/>
@@ -30,7 +34,6 @@ function App() {
        </Categories>
 
 
-       {<CreateTodoButton />}
     </>
   );
 }
