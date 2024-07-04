@@ -25,7 +25,12 @@ const StyledButton = styled.button`
 
 function CreateTodoButton() {
     return (
-        <StyledButton>+</StyledButton>
+        <StyledButton onClick={ (event) => {
+          console.log('le diste click')
+          console.log(event)
+          console.log(event.target)
+        } 
+      }>+</StyledButton>
     )
   }
 

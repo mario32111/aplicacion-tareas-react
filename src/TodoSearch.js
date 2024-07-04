@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from "styled-components";
 
 const SearchBar = styled.input`
@@ -13,9 +14,17 @@ const SearchBar = styled.input`
 `;
 
 
-function TodoSearch() {
+function TodoSearch({searchValue, setSearchValue}) {
+
+
     return (
-      <SearchBar placeholder="Cortar cebolla"/>
+      <SearchBar 
+        placeholder="Cortar cebolla"
+        value = {searchValue}
+        onChange= {(event) => {
+        setSearchValue(event.target.value)
+
+      }}/>
     )
   }
 

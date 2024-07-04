@@ -23,8 +23,8 @@ const Item = styled.li`
     cursor: pointer;
     font-size: 20px;
     border-bottom: 4px solid transparent; /* Borde inferior transparente por defecto */
-    border-top-left-radius: ${props => props.first ? '12px' : '0'};
-    border-top-right-radius: ${props => props.last ? '12px' : '0'};
+    border-top-left-radius: ${props => props.$first ? '12px' : '0'};
+    border-top-right-radius: ${props => props.$last ? '12px' : '0'};
     transition: border-bottom-color 0.5s ease, background-color 0.5s ease; 
     
     &:hover {
@@ -32,7 +32,7 @@ const Item = styled.li`
     }
 
     /* Estilo de borde inferior cuando está activo */
-    ${props => props.active && `
+    ${props => props.$active && `
         border-bottom-color: #01B7B6;
         background-color: #c5c5c5;
     `}
@@ -49,9 +49,9 @@ function Categories(props) {
     return (
         <Container>
             <Lista>
-                <Item first active={activeItem === 'Todos'} onClick={() => handleClick('Todos')}>Todos</Item>
-                <Item active={activeItem === 'Pendientes'} onClick={() => handleClick('Pendientes')}>Pendientes</Item>
-                <Item last active={activeItem === 'Completadas'} onClick={() => handleClick('Completadas')}>Completadas</Item>
+                <Item $first $active={activeItem === 'Todos'} onClick={() => handleClick('Todos')}>Todos</Item>
+                <Item $active={activeItem === 'Pendientes'} onClick={() => handleClick('Pendientes')}>Pendientes</Item>
+                <Item $last $active={activeItem === 'Completadas'} onClick={() => handleClick('Completadas')}>Completadas</Item>
             </Lista>
             {props.children}
         </Container>
