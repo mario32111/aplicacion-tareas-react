@@ -1,5 +1,5 @@
 
-import FondoCurvado from './fondo-curvado.svg';
+import FondoCurvado from '../assets/fondo-curvado.svg';
 import styled from 'styled-components';
 
 const StyledH1 = styled.h1`

@@ -13,7 +13,7 @@ const InputImportant = styled.input`
     /* Estilos para InputImportant si es necesario */
 `;
 
-const TextAreaDetails = styled.textarea`
+const TextAreaDetails = styled.textarea` 
     border-radius: 12px;
     border: 1px solid #a7a7a7;
     outline: none;
