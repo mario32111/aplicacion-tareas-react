@@ -12,6 +12,8 @@ import { AgregarTarea } from '../AgregarTarea';
 import { AgregarCategoria } from '../AgregarCategoria';
 
 function AppUI({
+  loading,
+  error,
   completedTodos,
   totalTodos,
   searchValue,
@@ -34,6 +36,10 @@ function AppUI({
           <CreateTodoButton />
         </ContainerSearch>
         <TodoList>
+          {loading && <p>Estamos cargando...</p>}
+          {error && <p>Desesperate, hubo un error!!</p>}
+          {(!loading && searchedTodos.length === 0) && <p>Crea tu primer todo!!</p>}
+
           {searchedTodos.map((todo, index) => (
             <TodoItem
               key={todo.text}
