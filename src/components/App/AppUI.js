@@ -10,6 +10,10 @@ import { ContainerSearch } from '../ContainerSearch';
 import { VentanaCrear } from '../VentanaCrear';
 import { AgregarTarea } from '../AgregarTarea';
 import { AgregarCategoria } from '../AgregarCategoria';
+import { TodosLoading } from '../TodosLoading';
+import { TodosError } from '../TodosError';
+import { EmptyTodos } from '../EmptyTodos';
+
 
 function AppUI({
   loading,
@@ -36,9 +40,9 @@ function AppUI({
           <CreateTodoButton />
         </ContainerSearch>
         <TodoList>
-          {loading && <p>Estamos cargando...</p>}
-          {error && <p>Desesperate, hubo un error!!</p>}
-          {(!loading && searchedTodos.length === 0) && <p>Crea tu primer todo!!</p>}
+          {loading && <TodosLoading/>}
+          {error && <TodosError/>}
+          {(!loading && searchedTodos.length === 0) && <EmptyTodos/>}
 
           {searchedTodos.map((todo, index) => (
             <TodoItem

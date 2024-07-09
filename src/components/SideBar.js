@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faExclamationCircle, faList, faCheckSquare } from '@fortawesome/free-solid-svg-icons';
+import { AiOutlineHome, AiOutlineExclamationCircle, AiOutlineAppstore, AiOutlineCheckSquare } from 'react-icons/ai';
 
 const SidebarContainer = styled.div`
     width: 200px;
@@ -13,7 +12,6 @@ const SidebarContainer = styled.div`
     position: absolute;
     z-index: 2;
     border-bottom-right-radius: 10px;
-
 `;
 
 const SidebarItem = styled.div`
@@ -35,22 +33,23 @@ const SideBar = () => {
     return (
         <SidebarContainer>
             <SidebarItem>
-                <Icon><FontAwesomeIcon icon={faList} /></Icon>
-            </SidebarItem>
-            <SidebarItem>
-                <Icon><FontAwesomeIcon icon={faHome} /></Icon>
-                Home
-            </SidebarItem>
-            <SidebarItem>
-                <Icon><FontAwesomeIcon icon={faExclamationCircle} /></Icon>
-                Important
-            </SidebarItem>
-            <SidebarItem>
-                <Icon><FontAwesomeIcon icon={faList} /></Icon>
+                <Icon><AiOutlineAppstore size={24} /></Icon>
                 Mis Categorías
             </SidebarItem>
             <SidebarItem>
-                <Icon><FontAwesomeIcon icon={faCheckSquare} /></Icon>
+                <Icon><AiOutlineHome size={24} /></Icon>
+                Home
+            </SidebarItem>
+            <SidebarItem>
+                <Icon><AiOutlineExclamationCircle size={24} /></Icon>
+                Important
+            </SidebarItem>
+            <SidebarItem>
+                <Icon><AiOutlineAppstore size={24} /></Icon>
+                Mis Categorías
+            </SidebarItem>
+            <SidebarItem>
+                <Icon><AiOutlineCheckSquare size={24} /></Icon>
                 Mis Tareas
             </SidebarItem>
         </SidebarContainer>
