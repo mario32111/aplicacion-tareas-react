@@ -2,12 +2,17 @@ import React from 'react';
 import { AppUI } from './AppUI';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 
+
+/* localStorage.setItem('tareas', JSON.stringify([{text: 'cortar cebolla', completed: true}]))
+ */
 function App() {
   const {item: todos, 
         saveItem: saveTodos,
         loading,
         error,
+        activateBuuttonAddTodo: addTodo,
       } = useLocalStorage('tareas', []);
+
 
   const completedTodos = todos.filter(todo => todo.completed).length;
   const totalTodos = todos.length;
