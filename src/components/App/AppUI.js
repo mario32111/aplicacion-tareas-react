@@ -24,20 +24,22 @@ function AppUI({
   setSearchValue,
   searchedTodos,
   toggleTodoStatus,
-  deleteTodo
+  deleteTodo,
+  windowActived,
+  setWindowActived,  
 }) {
   return (
     <>
       {/* <SideBar /> */}
       <TodoCounter completed={completedTodos} total={totalTodos} />
       <Categories>
-        {/* <VentanaCrear ExtraContent={AgregarCategoria}></VentanaCrear> */}
+        {windowActived && <VentanaCrear ExtraContent={AgregarTarea} openWindow={setWindowActived}></VentanaCrear>}
         <ContainerSearch>
           <TodoSearch
             searchValue={searchValue}
             setSearchValue={setSearchValue}
           />
-          <CreateTodoButton />
+          <CreateTodoButton openWindow={setWindowActived}/>
         </ContainerSearch>
         <TodoList>
           {loading && <TodosLoading/>}

@@ -10,8 +10,10 @@ function App() {
         saveItem: saveTodos,
         loading,
         error,
-        activateBuuttonAddTodo: addTodo,
       } = useLocalStorage('tareas', []);
+
+  
+  const [activedAddTodoWindow, setActivedTodoWindow] =  React.useState(false);
 
 
   const completedTodos = todos.filter(todo => todo.completed).length;
@@ -48,6 +50,8 @@ function App() {
       searchedTodos={searchedTodos}
       toggleTodoStatus={toggleTodoStatus}
       deleteTodo={deleteTodo}
+      windowActived = {activedAddTodoWindow}
+      setWindowActived = {setActivedTodoWindow}
     />
   );
 }

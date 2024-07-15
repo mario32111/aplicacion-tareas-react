@@ -77,18 +77,25 @@ const CloseButton = styled.button`
     cursor: pointer;
 `;
 
-function VentanaCrear({ ExtraContent }) {
+function VentanaCrear({ ExtraContent, openWindow }) {
     return (
         <Ventana>
             <ContCabecera>
                 <Titulo>Crear</Titulo>
-                <CloseButton type="button">X</CloseButton>
+                <CloseButton type="button"
+                    onClick={(event) => {
+                        console.log('le diste click')
+                        console.log(event)
+                        console.log(event.target)
+                        openWindow(false);
+                    }
+                    }>X</CloseButton>
             </ContCabecera>
             <ContVentana>
                 <LabelDato>Nombre</LabelDato>
                 <InputText placeholder="Nombre de la tarea"></InputText>
             </ContVentana>
-            
+
             {/* Renderizar ExtraContent si está definido */}
             {ExtraContent && (
                 <ContVentana>

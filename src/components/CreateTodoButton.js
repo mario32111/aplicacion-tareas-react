@@ -23,12 +23,13 @@ const StyledButton = styled.button`
 `
 
 
-function CreateTodoButton() {
+function CreateTodoButton( { openWindow }) {
     return (
         <StyledButton onClick={ (event) => {
           console.log('le diste click')
           console.log(event)
           console.log(event.target)
+          openWindow(true);
         } 
       }>+</StyledButton>
     )

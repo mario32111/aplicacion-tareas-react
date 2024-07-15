@@ -4,7 +4,6 @@ function useLocalStorage(itemName, initalValue){
     const [item, setItem]= React.useState(initalValue);
     const [loading, setLoading]= React.useState(true)
     const [error, setError]= React.useState(false);
-    const [activeButtonAddTodo, setactiveButtonAddTodo ]= React.useState(false);
 
 
     React.useEffect(()=> {
