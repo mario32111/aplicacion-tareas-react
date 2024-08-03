@@ -30,7 +30,7 @@ function AppUI({
 }) {
   return (
     <>
-      {/* <SideBar /> */}
+      { <SideBar /> }
       <TodoCounter completed={completedTodos} total={totalTodos} />
       <Categories>
         {windowActived && <VentanaCrear ExtraContent={AgregarTarea} openWindow={setWindowActived}></VentanaCrear>}

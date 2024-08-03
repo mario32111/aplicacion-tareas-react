@@ -1,6 +1,8 @@
 import React from 'react';
 import { AppUI } from './AppUI';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { useOpenWindow } from '../../hooks/useOpenWindow';
+
 
 
 /* localStorage.setItem('tareas', JSON.stringify([{text: 'cortar cebolla', completed: true}]))
@@ -12,8 +14,10 @@ function App() {
         error,
       } = useLocalStorage('tareas', []);
 
-  
-  const [activedAddTodoWindow, setActivedTodoWindow] =  React.useState(false);
+/*   const [activedAddTodoWindow, setActivedTodoWindow] =  React.useState(false);
+ */
+
+  const {openWindow: activedAddTodoWindow, setOpenWindow: setActivedTodoWindow} =  useOpenWindow(false) 
 
 
   const completedTodos = todos.filter(todo => todo.completed).length;
