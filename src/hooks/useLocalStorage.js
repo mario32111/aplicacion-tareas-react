@@ -1,4 +1,7 @@
 import React from 'react';
+/* localStorage.setItem('tareas', JSON.stringify([{text: 'cortar cebolla', completed: true},
+{text: 'terminar el curso de introduccion a react', completed: false}]))
+ */
 
 function useLocalStorage(itemName, initalValue){
     const [item, setItem]= React.useState(initalValue);

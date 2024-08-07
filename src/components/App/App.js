@@ -1,51 +1,15 @@
 import React from 'react';
 import { AppUI } from './AppUI';
-import { useLocalStorage } from '../../hooks/useLocalStorage';
-import { useOpenWindow } from '../../hooks/useOpenWindow';
+import { TodoProvider } from '../TodoContext';
 
-
-
-/* localStorage.setItem('tareas', JSON.stringify([{text: 'cortar cebolla', completed: true}]))
- */
 function App() {
-  const {item: todos, 
-        saveItem: saveTodos,
-        loading,
-        error,
-      } = useLocalStorage('tareas', []);
 
-/*   const [activedAddTodoWindow, setActivedTodoWindow] =  React.useState(false);
- */
-
-  const {openWindow: activedAddTodoWindow, setOpenWindow: setActivedTodoWindow} =  useOpenWindow(false) 
-
-
-  const completedTodos = todos.filter(todo => todo.completed).length;
-  const totalTodos = todos.length;
-
-  const [searchValue, setSearchValue] = React.useState('');
-  console.log('los usuarios buscan todos de ' + searchValue);
-
-  const searchedTodos = todos.filter(todo =>
-    todo.text.toLowerCase().includes(searchValue.toLowerCase())
-  );
-
-  const toggleTodoStatus = (index) => {
-    const newTodos = [...todos];
-    newTodos[index].completed = !newTodos[index].completed;
-    saveTodos(newTodos);
-  };
-
-  const deleteTodo = (index) => {
-    const newTodos = [...todos];
-    newTodos.splice(index, 1);
-    console.log(newTodos);
-    saveTodos(newTodos);
-  };
 
   return (
-    <AppUI
-      loading= {loading}
+    <TodoProvider>
+      <AppUI />
+    </TodoProvider>
+/*       loading= {loading}
       error= {error}
       completedTodos={completedTodos}
       totalTodos={totalTodos}
@@ -55,8 +19,7 @@ function App() {
       toggleTodoStatus={toggleTodoStatus}
       deleteTodo={deleteTodo}
       windowActived = {activedAddTodoWindow}
-      setWindowActived = {setActivedTodoWindow}
-    />
+      setWindowActived = {setActivedTodoWindow} */
   );
 }
 
