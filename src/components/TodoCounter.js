@@ -1,6 +1,8 @@
 
 import FondoCurvado from '../assets/fondo-curvado.svg';
 import styled from 'styled-components';
+import { TodoContext } from './TodoContext';
+import React from 'react'
 
 const StyledH1 = styled.h1`
     font-size: 42px;
@@ -36,14 +38,15 @@ const Container = styled.div`
   }
 `;
 
-function TodoCounter({ total, completed }) {
+function TodoCounter() {
+  const {completedTodos, totalTodos} = React.useContext(TodoContext)
   return (
     <Container>
       <StyledH1>
         *INSERTE CATEGORIA*
       </StyledH1>
       <StyledH2>
-        Has completado <b>{completed}</b> de <b>{total} tareas</b>
+        Has completado <b>{completedTodos}</b> de <b>{totalTodos} tareas</b>
       </StyledH2>
     </Container>
 

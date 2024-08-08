@@ -9,17 +9,6 @@ function App() {
     <TodoProvider>
       <AppUI />
     </TodoProvider>
-/*       loading= {loading}
-      error= {error}
-      completedTodos={completedTodos}
-      totalTodos={totalTodos}
-      searchValue={searchValue}
-      setSearchValue={setSearchValue}
-      searchedTodos={searchedTodos}
-      toggleTodoStatus={toggleTodoStatus}
-      deleteTodo={deleteTodo}
-      windowActived = {activedAddTodoWindow}
-      setWindowActived = {setActivedTodoWindow} */
   );
 }
 

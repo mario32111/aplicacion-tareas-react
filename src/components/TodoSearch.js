@@ -1,4 +1,5 @@
-import React from 'react';
+import { TodoContext } from './TodoContext';
+import React from 'react'
 import styled from "styled-components";
 
 const SearchBar = styled.input`
@@ -14,8 +15,9 @@ const SearchBar = styled.input`
 `;
 
 
-function TodoSearch({searchValue, setSearchValue}) {
+function TodoSearch() {
 
+  const {searchValue, setSearchValue} = React.useContext(TodoContext)
 
     return (
       <SearchBar 

@@ -16,20 +16,20 @@ import { EmptyTodos } from '../EmptyTodos';
 import { TodoContext } from '../TodoContext';
 
 function AppUI() {
+  const 
+  {
+    loading,
+    error,
+    searchedTodos,
+    toggleTodoStatus,
+    deleteTodo,
+    activedAddTodoWindow, 
+    setActivedTodoWindow,
+  } =React.useContext(TodoContext)
   return (
     <>
       {<SideBar />}
       <TodoCounter />
-      <TodoContext.Consumer>
-        {({
-          loading,
-          error,
-          searchedTodos,
-          toggleTodoStatus,
-          deleteTodo,
-          activedAddTodoWindow, 
-          setActivedTodoWindow,
-        }) => (
           <Categories>
             {activedAddTodoWindow && <VentanaCrear ExtraContent={AgregarTarea} openWindow={setActivedTodoWindow}></VentanaCrear>}
             <ContainerSearch>
@@ -52,9 +52,7 @@ function AppUI() {
               ))}
             </TodoList>
           </Categories>
-        )}
 
-      </TodoContext.Consumer>
 
     </>
   );
