@@ -33,25 +33,11 @@ function AppUI() {
       {<SideBar />}
       <TodoCounter />
       <Categories>
-{/*         {activedAddTodoWindow && <VentanaCrear ExtraContent={AgregarTarea} openWindow={setActivedTodoWindow}></VentanaCrear>}
- */}        <ContainerSearch>
-          <TodoSearch />
-          <CreateTodoButton openWindow={setOpenModal } />
-        </ContainerSearch>
         <TodoList>
           {loading && <TodosLoading />}
           {error && <TodosError />}
           {(!loading && searchedTodos.length === 0) && <EmptyTodos />}
 
-          {searchedTodos.map((todo, index) => (
-            <TodoItem
-              key={todo.text}
-              nombre={todo.text}
-              completed={todo.completed}
-              toggleStatus={() => toggleTodoStatus(index)}
-              deleteTodo={() => deleteTodo(index)}
-            />
-          ))}
         </TodoList>
       </Categories>
 

@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useLocalStorage } from '../hooks/useLocalStorage';
+import { TodoContext } from './TodoContext';
 
 const Ventana = styled.form`
     width: 40vw;
@@ -78,6 +80,12 @@ const CloseButton = styled.button`
 `;
 
 function VentanaCrear({ ExtraContent, openWindow }) {
+    const {
+        addTodo,
+    } = React.useContext(TodoContext)
+
+    const [taskName, setTaskName] = React.useState('');
+
     return (
         <Ventana>
             <ContCabecera>
@@ -88,12 +96,16 @@ function VentanaCrear({ ExtraContent, openWindow }) {
                         console.log(event)
                         console.log(event.target)
                         openWindow(false);
+                        const cont = document.getElementById('modal')
+                        cont.classList.remove('modal')
                     }
                     }>X</CloseButton>
             </ContCabecera>
             <ContVentana>
                 <LabelDato>Nombre</LabelDato>
-                <InputText placeholder="Nombre de la tarea"></InputText>
+                <InputText placeholder="Nombre de la tarea"
+                    value={taskName}
+                    onChange={(event) => setTaskName(event.target.value)}></InputText>
             </ContVentana>
 
             {/* Renderizar ExtraContent si está definido */}
@@ -103,7 +115,16 @@ function VentanaCrear({ ExtraContent, openWindow }) {
                 </ContVentana>
             )}
 
-            <AddButton type="button">Agregar</AddButton>
+            <AddButton
+                onClick={() => {
+                    addTodo(taskName);
+                    setTaskName(''); // Limpiar el input después de agregar
+                }}
+                type="button"
+            >
+                Agregar
+            </AddButton>
+
         </Ventana>
     );
 }

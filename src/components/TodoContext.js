@@ -9,17 +9,13 @@ function TodoProvider({ children }) {
         loading,
         error,
     } = useLocalStorage('tareas', []);
-    /* const [activedAddTodoWindow, setActivedTodoWindow] = React.useState(false);
-
-
-      const {openWindow: activedAddTodoWindow, setOpenWindow: setActivedTodoWindow} =  useOpenWindow(false) 
-     */
-
     const completedTodos = todos.filter(todo => todo.completed).length;
     const totalTodos = todos.length;
 
     const [searchValue, setSearchValue] = React.useState('');
     const [openModal, setOpenModal] = React.useState(false);
+
+
 
     console.log('los usuarios buscan todos de ' + searchValue);
 
@@ -39,6 +35,13 @@ function TodoProvider({ children }) {
         console.log(newTodos);
         saveTodos(newTodos);
     };
+
+    const addTodo = (name) => {
+        const newTodos = [...todos];
+        newTodos.push({text: name, completed: false})
+        console.log("asdf");
+        saveTodos(newTodos);
+    }
     return (
         <TodoContext.Provider value={{
             loading,
@@ -52,6 +55,7 @@ function TodoProvider({ children }) {
             deleteTodo,
             openModal,
             setOpenModal,
+            addTodo,
         }}>
             {children}
         </TodoContext.Provider>
