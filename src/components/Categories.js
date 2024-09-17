@@ -24,6 +24,9 @@ const Lista = styled.ul`
     padding: 0;
 `;
 
+const ListaItems= styled.ul`
+    padding:0;
+`
 const Item = styled.li`
     list-style: none;
     width: 100%;
@@ -70,7 +73,7 @@ function Categories(props) {
                 <TodoSearch />
                 <CreateTodoButton openWindow={setOpenModal} />
             </ContainerSearch>
-            <ul>
+            <ListaItems>
                 {filteredTodos.map((todo, index) => (
                     <TodoItem
                         key={todo.text}
@@ -80,8 +83,8 @@ function Categories(props) {
                         deleteTodo={() => deleteTodo(index)}
                     />
                 ))}
-            </ul>
-            {props.children}
+            </ListaItems>
+                {props.children}
         </Container>
 
 

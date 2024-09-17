@@ -13,3 +13,13 @@
 .modal.show {
     bottom: 20px; /* Ajusta esto según la altura que desees desde el fondo */
   }
+
+#sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    max-width: 200px;
+    min-width: 50px;
+    width: 10%;
+}

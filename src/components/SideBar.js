@@ -4,7 +4,7 @@ import { AiOutlineHome, AiOutlineExclamationCircle, AiOutlineAppstore, AiOutline
 
 const SidebarContainer = styled.div`
     width: 200px;
-    height: 80%;
+    height: 100%;
     background-color: #333;
     color: white;
     padding: 20px;
@@ -29,12 +29,18 @@ const Icon = styled.div`
     margin-right: 12px;
 `;
 
-const SideBar = () => {
+
+
+const SideBar = ({openWindow}) => {
+    const closeSideBar = () =>{
+        openWindow(false);
+
+    }
     return (
         <SidebarContainer>
-            <SidebarItem>
+            <SidebarItem onClick={closeSideBar}>
                 <Icon><AiOutlineAppstore size={24} /></Icon>
-                Mis Categorías
+                Opciones
             </SidebarItem>
             <SidebarItem>
                 <Icon><AiOutlineHome size={24} /></Icon>

@@ -1,5 +1,7 @@
 import React from 'react';
 import SideBar from '../SideBar';
+import SideBarInactive from '../SideBarInactive';
+
 import { TodoCounter } from '../TodoCounter';
 import { TodoSearch } from '../TodoSearch';
 import { TodoList } from '../TodoList';
@@ -26,11 +28,25 @@ function AppUI() {
       toggleTodoStatus,
       deleteTodo,
       openModal,
-      setOpenModal
+      setOpenModal,
+      openSideBar,
+      setOpenSideBar,
     } = React.useContext(TodoContext)
   return (
     <>
-      {<SideBar />}
+      {openSideBar && (
+        <Modal containerId={'sidebar'}>
+          {<SideBar openWindow={setOpenSideBar} />}
+
+        </Modal>
+      )}
+
+      {!openSideBar && (
+        <Modal containerId={'sidebar'}>
+          {<SideBarInactive openWindow={setOpenSideBar} />}
+
+        </Modal>
+      )}
       <TodoCounter />
       <Categories>
         <TodoList>
@@ -42,7 +58,7 @@ function AppUI() {
       </Categories>
 
       {openModal && (
-        <Modal>
+        <Modal containerId={'modal'}>
           <VentanaCrear ExtraContent={AgregarTarea} openWindow={setOpenModal}></VentanaCrear>
         </Modal>
       )}

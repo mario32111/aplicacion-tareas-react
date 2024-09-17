@@ -2,16 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom'
 import '../assets/style.css';  // Importa la hoja de estilos
 
-function Modal ( {children} ) 
+function Modal ( {children, containerId} ) 
 {
-    const cont = document.getElementById('modal')
-    cont.classList.add('modal')
+    const cont = document.getElementById(containerId)
+    if(!containerId ==="sidbar"){
+        cont.classList.add('modal')
+    }
+
+
 
     return ReactDOM.createPortal(
         <>
             {children}
         </>,
-        document.getElementById('modal')
+        document.getElementById(containerId)
     );
 }
 

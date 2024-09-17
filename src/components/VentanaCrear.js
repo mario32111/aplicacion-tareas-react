@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useLocalStorage } from '../hooks/useLocalStorage';
 import { TodoContext } from './TodoContext';
 
 const Ventana = styled.form`
@@ -19,17 +18,17 @@ const Ventana = styled.form`
     padding-top: 0px;
     box-shadow: 3px 3px 10px rgba(128, 128, 128, 0.397);
     z-index: 2; 
+    height: 85vh;
 `;
 
-const Titulo = styled.h1`
-`;
+const Titulo = styled.h1``;
 
 const ContVentana = styled.div`
     display: flex;
     flex-direction: column;
     width: 80%;
     margin: 0 auto;
-    margin-bottom: 24px;
+    margin-bottom: 0;
 `;
 
 const LabelDato = styled.p``;
@@ -57,15 +56,14 @@ const AddButton = styled.button`
     }
 
     &:active {
-        background-color: #gray;
+        background-color: gray;
     }
-    
 `;
 
 const ContCabecera = styled.div`
     display: flex;
     justify-content: space-between;
-    padding: 12px;
+    padding: 0px;
 `;
 
 const CloseButton = styled.button`
@@ -80,53 +78,59 @@ const CloseButton = styled.button`
 `;
 
 function VentanaCrear({ ExtraContent, openWindow }) {
-    const {
-        addTodo,
-    } = React.useContext(TodoContext)
-
+    const { addTodo, clearFields } = React.useContext(TodoContext);
     const [taskName, setTaskName] = React.useState('');
+    const [error, setError] = React.useState(false);
+
+    const handleAddTodo = () => {
+        // Verificar si algún campo está vacío
+        if (taskName.trim() === '') {
+            setError(true); // Mostrar mensaje de error si falta algún campo
+            return;
+        }
+
+        // Si todos los campos están completos, agregar la tarea
+        addTodo(taskName);
+        setTaskName(''); // Limpiar input después de agregar
+        setError(false); // Limpiar el mensaje de error si todo está bien
+        openWindow(false);
+        clearFields(); // Limpiar campos adicionales
+    };
 
     return (
         <Ventana>
             <ContCabecera>
                 <Titulo>Crear</Titulo>
-                <CloseButton type="button"
-                    onClick={(event) => {
-                        console.log('le diste click')
-                        console.log(event)
-                        console.log(event.target)
-                        openWindow(false);
-                        const cont = document.getElementById('modal')
-                        cont.classList.remove('modal')
-                    }
-                    }>X</CloseButton>
+                <CloseButton type="button" onClick={() => {
+                    openWindow(false);
+                    clearFields(); // Limpiar campos adicionales al cerrar
+                }}>X</CloseButton>
             </ContCabecera>
+
             <ContVentana>
                 <LabelDato>Nombre</LabelDato>
-                <InputText placeholder="Nombre de la tarea"
+                <InputText 
+                    placeholder="Nombre de la tarea"
                     value={taskName}
-                    onChange={(event) => setTaskName(event.target.value)}></InputText>
+                    onChange={(event) => setTaskName(event.target.value)}
+                />
             </ContVentana>
 
-            {/* Renderizar ExtraContent si está definido */}
+            {/* Mostrar el contenido adicional si existe */}
             {ExtraContent && (
                 <ContVentana>
-                    {ExtraContent()} {/* Llamar a ExtraContent como una función para renderizar */}
+                    {ExtraContent()} {/* Llamar a ExtraContent */}
                 </ContVentana>
             )}
 
-            <AddButton
-                onClick={() => {
-                    addTodo(taskName);
-                    setTaskName(''); // Limpiar el input después de agregar
-                }}
-                type="button"
-            >
+            {/* Mensaje de error si algún campo está vacío */}
+            {error && <p style={{ color: 'red' }}>Todos los campos son obligatorios.</p>}
+
+            <AddButton type="button" onClick={handleAddTodo}>
                 Agregar
             </AddButton>
-
         </Ventana>
     );
 }
 
-export { VentanaCrear, InputText };
+export { VentanaCrear };
