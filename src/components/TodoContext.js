@@ -5,6 +5,8 @@ const TodoContext = React.createContext();
 
 function TodoProvider({ children }) {
     const { item: todos, saveItem: saveTodos, loading, error } = useLocalStorage('tareas', []);
+    const { item: categories, saveItem: saveCategories, categoriesLoading, categoriesError } = useLocalStorage('categories', []);
+
     const completedTodos = todos.filter(todo => todo.completed).length;
     const totalTodos = todos.length;
 
@@ -48,6 +50,12 @@ function TodoProvider({ children }) {
         saveTodos(newTodos);
     };
 
+    const addCategorie = (name, details) => {
+        const newCategories = [...categories];
+        newCategories.push({text: name, description: details});
+        saveCategories(newCategories);
+    };
+
     return (
         <TodoContext.Provider value={{
             loading,
@@ -73,6 +81,7 @@ function TodoProvider({ children }) {
             details,
             setDetails,
             clearFields, // Proporcionar la función clearFields
+            addCategorie,
         }}>
             {children}
         </TodoContext.Provider>

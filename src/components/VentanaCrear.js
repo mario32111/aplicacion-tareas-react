@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { TodoContext } from './TodoContext';
+import { AgregarCategoria } from './AgregarCategoria';
 
 const Ventana = styled.form`
     width: 40vw;
@@ -78,7 +79,7 @@ const CloseButton = styled.button`
 `;
 
 function VentanaCrear({ ExtraContent, openWindow }) {
-    const { addTodo, clearFields } = React.useContext(TodoContext);
+    const { addTodo, clearFields, addCategorie } = React.useContext(TodoContext);
     const [taskName, setTaskName] = React.useState('');
     const [error, setError] = React.useState(false);
 
@@ -95,6 +96,10 @@ function VentanaCrear({ ExtraContent, openWindow }) {
         setError(false); // Limpiar el mensaje de error si todo está bien
         openWindow(false);
         clearFields(); // Limpiar campos adicionales
+    };
+
+    const addCategory = () => {
+        addCategorie("hola", "hola");
     };
 
     return (
