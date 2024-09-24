@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/aplicacion-tareas-react/static/css/main.4a866eae.css",
+    "main.js": "/aplicacion-tareas-react/static/js/main.09080028.js",
+    "index.html": "/aplicacion-tareas-react/index.html",
+    "static/media/fondo-curvado.svg": "/aplicacion-tareas-react/static/media/fondo-curvado.f5e83ed0a679a67e1cd512d3be7f7059.svg",
+    "main.4a866eae.css.map": "/aplicacion-tareas-react/static/css/main.4a866eae.css.map",
+    "main.09080028.js.map": "/aplicacion-tareas-react/static/js/main.09080028.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4a866eae.css",
+    "static/js/main.09080028.js"
+  ]
+}
