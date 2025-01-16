@@ -20,6 +20,8 @@ function TodoProvider({ children }) {
     const [category, setCategory] = React.useState('');
     const [details, setDetails] = React.useState('');
 
+    const [categoryNav, setCategoryNav] = React.useState('home');
+
     // Función para limpiar los campos
     const clearFields = () => {
         setDate('');
@@ -31,6 +33,8 @@ function TodoProvider({ children }) {
     const searchedTodos = todos.filter(todo =>
         todo.text.toLowerCase().includes(searchValue.toLowerCase())
     );
+
+    const importantTodos = searchedTodos.filter(todo => todo.important);
 
     const toggleTodoStatus = (index) => {
         const newTodos = [...todos];
@@ -44,9 +48,9 @@ function TodoProvider({ children }) {
         saveTodos(newTodos);
     };
 
-    const addTodo = (name) => {
+    const addTodo = (name, imp) => {
         const newTodos = [...todos];
-        newTodos.push({text: name, completed: false});
+        newTodos.push({text: name, completed: false, important: imp});
         saveTodos(newTodos);
     };
 
@@ -82,6 +86,9 @@ function TodoProvider({ children }) {
             setDetails,
             clearFields, // Proporcionar la función clearFields
             addCategorie,
+            categoryNav,
+            setCategoryNav,
+            importantTodos,
         }}>
             {children}
         </TodoContext.Provider>

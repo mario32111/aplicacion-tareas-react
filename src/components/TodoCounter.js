@@ -39,11 +39,12 @@ const Container = styled.div`
 `;
 
 function TodoCounter() {
+  const { categoryNav, setCategoryNav } = React.useContext(TodoContext);
   const {completedTodos, totalTodos} = React.useContext(TodoContext)
   return (
     <Container>
       <StyledH1>
-        *INSERTE CATEGORIA*
+        {categoryNav}
       </StyledH1>
       <StyledH2>
         Has completado <b>{completedTodos}</b> de <b>{totalTodos} tareas</b>

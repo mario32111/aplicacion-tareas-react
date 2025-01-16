@@ -11,6 +11,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -30,5 +32,8 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://mario32111.github.io/aplicacion-tareas-react"
+  "homepage": "https://mario32111.github.io/aplicacion-tareas-react",
+  "devDependencies": {
+    "gh-pages": "^6.1.1"
+  }
 }

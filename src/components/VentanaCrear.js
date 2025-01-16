@@ -91,7 +91,7 @@ function VentanaCrear({ ExtraContent, openWindow }) {
         }
 
         // Si todos los campos están completos, agregar la tarea
-        addTodo(taskName);
+        addTodo(taskName, false);
         setTaskName(''); // Limpiar input después de agregar
         setError(false); // Limpiar el mensaje de error si todo está bien
         openWindow(false);

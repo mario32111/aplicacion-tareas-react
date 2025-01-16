@@ -24,6 +24,7 @@ const StyledEmptyIcon = styled(GiEmptyMetalBucket)`
   }
 
   &:active {
+  
     color: #ff0000;
   }
 `;

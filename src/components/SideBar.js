@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { AiOutlineHome, AiOutlineExclamationCircle, AiOutlineAppstore, AiOutlineCheckSquare } from 'react-icons/ai';
+import { TodoContext } from './TodoContext';
 
 const SidebarContainer = styled.div`
     width: 200px;
@@ -29,32 +30,37 @@ const Icon = styled.div`
     margin-right: 12px;
 `;
 
+const SideBar = ({ openWindow }) => {
+    const { categoryNav, setCategoryNav } = React.useContext(TodoContext);
 
+    const changeCategoryProvider = (cate) => {
+        setCategoryNav(cate);
+        console.log(categoryNav);       
+    };
 
-const SideBar = ({openWindow}) => {
-    const closeSideBar = () =>{
+    const closeSideBar = () => {
         openWindow(false);
+    };
 
-    }
     return (
         <SidebarContainer>
             <SidebarItem onClick={closeSideBar}>
                 <Icon><AiOutlineAppstore size={24} /></Icon>
                 Opciones
             </SidebarItem>
-            <SidebarItem>
+            <SidebarItem onClick={() => changeCategoryProvider('home')}>
                 <Icon><AiOutlineHome size={24} /></Icon>
                 Home
             </SidebarItem>
-            <SidebarItem>
+            <SidebarItem onClick={() => changeCategoryProvider('important')}>
                 <Icon><AiOutlineExclamationCircle size={24} /></Icon>
                 Important
             </SidebarItem>
-            <SidebarItem>
+            <SidebarItem onClick={() => changeCategoryProvider('mis-categorias')}>
                 <Icon><AiOutlineAppstore size={24} /></Icon>
                 Mis Categorías
             </SidebarItem>
-            <SidebarItem>
+            <SidebarItem onClick={() => changeCategoryProvider('mis-tareas')}>
                 <Icon><AiOutlineCheckSquare size={24} /></Icon>
                 Mis Tareas
             </SidebarItem>

@@ -31,13 +31,16 @@ function AppUI() {
       setOpenModal,
       openSideBar,
       setOpenSideBar,
+      categoryNav,
+      setCategoryNav,
+      importantTodos
     } = React.useContext(TodoContext)
+
   return (
     <>
       {openSideBar && (
         <Modal containerId={'sidebar'}>
           {<SideBar openWindow={setOpenSideBar} />}
-
         </Modal>
       )}
 
@@ -48,14 +51,25 @@ function AppUI() {
         </Modal>
       )}
       <TodoCounter />
-      <Categories>
-        <TodoList>
-          {loading && <TodosLoading />}
-          {error && <TodosError />}
-          {(!loading && searchedTodos.length === 0) && <EmptyTodos />}
+      {categoryNav === 'home' && (
+        <Categories>
+          <TodoList>
+            {loading && <TodosLoading />}
+            {error && <TodosError />}
+            {!loading && searchedTodos.length === 0 && <EmptyTodos />}
+          </TodoList>
+        </Categories>
+      )}
 
-        </TodoList>
-      </Categories>
+      {categoryNav === 'important' && (
+        <Categories>
+          <TodoList>
+            {loading && <TodosLoading />}
+            {error && <TodosError />}
+            {!loading && importantTodos.length === 0 && <EmptyTodos />}
+          </TodoList>
+        </Categories>
+      )}
 
       {openModal && (
         <Modal containerId={'modal'}>
